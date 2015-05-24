@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this is a list of my subscribe podcasts</title>
+    <script>
+      (function() {
+           if (!
+           /*@cc_on!@*/
+           0) return;
+           var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+           var i= e.length;
+           while (i--){
+               document.createElement(e[i]);
+           }
+      })()
+    </script>
+    <script src="build/react.js"></script>
+    <script src="jquery.js"></script>
+  </head>
+  <body>
+    <article class="container" id="content">
+      <ol>
+        <li>
+          <h3>timer</h3>
+          <section id="timer"></section>
+        </li>
+        <li>
+          <h3>podcast</h3>
+          <section id="podcast_list"></section>
+        </li>
+        <li>
+          <h3>users</h3>
+          <section id="user_list"></section>
+        </li>
+      </ol>
+    </article>
+    <!-- <script src="build/list.js"></script> -->
+    <script src="build/user_list.js"></script>
+    <!-- <script src="build/timer.js"></script> -->
+  </body>
+</html>
