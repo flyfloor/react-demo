@@ -26,28 +26,53 @@
 
 // React.render(<UserList/>, document.getElementById('user_list'))
 
-var LikeBtn = React.createClass({
+// var LikeBtn = React.createClass({
+//     getInitialState: function() {
+//         return {
+//             liked: false 
+//         }
+//     },
+
+//     handleClick: function(e){
+//         e.preventDefault()
+//         e.stopPropagation()
+//         this.setState({
+//             liked: !this.state.liked 
+//         })
+//     },
+
+//     render: function(){
+//         var text = this.state.liked ? 'like' : 'don\'t like'
+//         return (
+//             <a href="javascript:;" onClick={this.handleClick}>{text}</a>    
+//         )
+//     }
+// })
+
+// React.render(<LikeBtn/>, document.body)
+
+var Input = React.createClass({
     getInitialState: function() {
         return {
-            liked: false 
-        }
+            value: 'hello'
+        };
     },
 
-    handleClick: function(e){
-        e.preventDefault()
-        e.stopPropagation()
+    inputChange: function(e) {
+        var value = e.target.value ? e.target.value : 'hello'
         this.setState({
-            liked: !this.state.liked 
-        })
+            value: value
+        });
     },
 
-    render: function(){
-        var text = this.state.liked ? 'like' : 'don\'t like'
-        return (
-            <a href="javascript:;" onClick={this.handleClick}>{text}</a>    
+    render: function() {
+        return ( 
+            <div>
+                <input onChange={this.inputChange}/>
+                <p>{this.state.value}</p>
+            </div>
         )
     }
-})
+});
 
-React.render(<LikeBtn/>, document.body)
-
+React.render( <Input/> , document.body);
