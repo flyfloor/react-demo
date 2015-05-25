@@ -77,33 +77,34 @@
 
 // React.render( <Input/> , document.body);
 
-var Hello = React.createClass({displayName: "Hello",
-    getInitialState: function() {
-        return {
-            opacity: 1.0
-        };
-    },
+var UserGist = React.createClass({displayName: "UserGist",
+  getInitialState: function() {
+    return {
+      username: '',
+      lastGistUrl: 'javascript:;'
+    };
+  },
 
-    componentDidMount: function() {
-        this.timer = setInterval(function() {
-            var opacity = this.state.opacity;
-            opacity -= .05;
-            if (opacity < 0.1) {
-                opacity = 1.0;
-            }
-            this.setState({
-                opacity: opacity
-            });
-        }.bind(this), 100);
-    },
+  componentDidMount: function() {
+    $.get(this.props.source, function(result) {
+      var lastGist = result[0];
+      if (this.isMounted()) {
+        this.setState({
+          username: lastGist.owner.login,
+          lastGistUrl: lastGist.html_url
+        });
+      }
+    }.bind(this));
+  },
 
-    render: function() {
-        return ( 
-            React.createElement("div", {style: {opacity: this.state.opacity}}, 
-                "Hello ", this.props.name
-            )
-        );
-    }
+  render: function() {
+    return (
+      React.createElement("div", null, 
+        React.createElement("span", null, this.state.username, "'s last gist is "), 
+        React.createElement("a", {href: this.state.lastGistUrl, target: "_blank"}, "here"), "."
+      )
+    );
+  }
 });
 
-React.render( React.createElement(Hello, {name: "world"}) , document.body);
+React.render(React.createElement(UserGist, {source: "https://api.github.com/users/jerryshew/gists"}), document.body);
