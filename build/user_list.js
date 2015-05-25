@@ -51,28 +51,59 @@
 
 // React.render(<LikeBtn/>, document.body)
 
-var Input = React.createClass({displayName: "Input",
+// var Input = React.createClass({
+//     getInitialState: function() {
+//         return {
+//             value: 'hello'
+//         };
+//     },
+
+//     inputChange: function(e) {
+//         var value = e.target.value ? e.target.value : 'hello'
+//         this.setState({
+//             value: value
+//         });
+//     },
+
+//     render: function() {
+//         return ( 
+//             <div>
+//                 <input onChange={this.inputChange}/>
+//                 <p>{this.state.value}</p>
+//             </div>
+//         )
+//     }
+// });
+
+// React.render( <Input/> , document.body);
+
+var Hello = React.createClass({displayName: "Hello",
     getInitialState: function() {
         return {
-            value: 'hello'
+            opacity: 1.0
         };
     },
 
-    inputChange: function(e) {
-        var value = e.target.value ? e.target.value : 'hello'
-        this.setState({
-            value: value
-        });
+    componentDidMount: function() {
+        this.timer = setInterval(function() {
+            var opacity = this.state.opacity;
+            opacity -= .05;
+            if (opacity < 0.1) {
+                opacity = 1.0;
+            }
+            this.setState({
+                opacity: opacity
+            });
+        }.bind(this), 100);
     },
 
     render: function() {
         return ( 
-            React.createElement("div", null, 
-                React.createElement("input", {onChange: this.inputChange}), 
-                React.createElement("p", null, this.state.value)
+            React.createElement("div", {style: {opacity: this.state.opacity}}, 
+                "Hello ", this.props.name
             )
-        )
+        );
     }
 });
 
-React.render( React.createElement(Input, null) , document.body);
+React.render( React.createElement(Hello, {name: "world"}) , document.body);
