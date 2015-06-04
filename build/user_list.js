@@ -115,7 +115,7 @@ var User = React.createClass({displayName: "User",
       React.createElement("li", {className: "user", key: this.props.id}, 
         React.createElement("h1", null, this.props.name, ":"), 
         React.createElement("p", null, this.props.text), 
-        React.createElement("p", null, "I'm a ", this.props.age, " age ", this.props.sex)
+        React.createElement("p", null, "I am a ", this.props.age, " age ", this.props.sex)
       )
     )
   }

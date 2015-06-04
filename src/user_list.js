@@ -115,7 +115,7 @@ var User = React.createClass({
       <li className="user" key={this.props.id}>
         <h1>{this.props.name}:</h1>
         <p>{this.props.text}</p>
-        <p>I'm a {this.props.age} age {this.props.sex}</p>
+        <p>I am a {this.props.age} age {this.props.sex}</p>
       </li>
     )
   }
