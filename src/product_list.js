@@ -22,7 +22,6 @@ var ProductTable = React.createClass({
     render: function(){
         var rows = [],
             lastCategory = null
-        console.log(this.props)
         if (this.props.products) {
             this.props.products.map(function(product){
                 if (product.name.indexOf(this.props.filterText) === -1 || (!product.stocked && this.props.inStockOnly)) {
