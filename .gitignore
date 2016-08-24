@@ -1,1 +1,5 @@
 /build/.module-cache/*
+node_modules
+test
+*.log
+
