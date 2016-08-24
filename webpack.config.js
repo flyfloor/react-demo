@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ForceCaseSensitivityPlugin = require('force-case-sensitivity-webpack-plugin');
 
 module.exports = {
 
@@ -14,6 +15,7 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
+        new ForceCaseSensitivityPlugin(),
         // new webpack.optimize.UglifyJsPlugin({
         //     sourceMap: false,
         //     mangle: false
@@ -31,6 +33,9 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel" 
+            }, {
+                test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                loader : 'file-loader'
             }
         ]
     },
