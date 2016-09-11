@@ -5,7 +5,10 @@ var ForceCaseSensitivityPlugin = require('force-case-sensitivity-webpack-plugin'
 
 module.exports = {
 
-    entry: "./src/app.js",
+    entry: [
+        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+        "./src/app.js"
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.js',
@@ -13,7 +16,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new ForceCaseSensitivityPlugin(),
         // new webpack.optimize.UglifyJsPlugin({
