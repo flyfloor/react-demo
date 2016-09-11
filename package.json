@@ -19,7 +19,8 @@
   "dependencies": {
     "em2": "^0.1.0",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-ui-component": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",

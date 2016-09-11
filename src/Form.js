@@ -9,14 +9,8 @@ export default class Form extends Component {
             store: props.store
         }
         Object.keys(store).map(key => {
-            this.state[`onField${key}Change`] = (value, options={}) => {
-                let {checked, type} = options
-                if (type === 'checkbox') {
-                    let oldStore = this.state.store[key]
-                    this.state.store[key] = checked ? oldStore.concat(value) : oldStore.filter(i => i !== value)
-                } else {
-                    this.state.store[key] = value
-                }
+            this.state[`onField${key}Change`] = (newVal) => {
+                this.state.store[key] = newVal
                 this.setState({
                     store: this.state.store
                 });

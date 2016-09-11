@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import Form from './Form';
 import Field from './Field';
 // import style from 'react-ui-component/css/pagination.less';
-// import {Radio} from 'react-ui-component';
+import {Radio, CheckBox, CheckBoxGroup} from 'react-ui-component';
+
 const UserForm = React.createClass({
     getDefaultProps() {
         return {
@@ -32,18 +33,11 @@ const UserForm = React.createClass({
                 </Field>
                 <Field>
                     <label htmlFor="">职业：</label>
-                    <label htmlFor="">
-                        <input type="checkbox" name="job" value="teacher"/>
-                        <span>老师</span>
-                    </label>
-                    <label htmlFor="">
-                        <input type="checkbox" name="job" value="student"/>
-                        <span>学生</span>
-                    </label>
-                    <label htmlFor="">
-                        <input type="checkbox" name="job" value="president"/>
-                        <span>校长</span>
-                    </label>
+                    <CheckBoxGroup name="job">
+                        <CheckBox key='job-1' value="teacher">老师</CheckBox>
+                        <CheckBox key='job-2' value="student">学生</CheckBox>
+                        <CheckBox key='job-3' value="president">校长</CheckBox>
+                    </CheckBoxGroup>
                 </Field>
                 <Field>
                     <label htmlFor="">性别：</label>
@@ -66,9 +60,12 @@ const UserForm = React.createClass({
                 <Field>
                     <label htmlFor="">单身：</label>
                     <label htmlFor="single">
-                        <input type="radio" name="single" value={true}/>
+                        <input type="radio" name="single" value="1"/>
                         <span>单身狗？</span>
                     </label>
+                </Field>
+                <Field>
+                    <Radio name="security" value="1">社保？</Radio>
                 </Field>
                 <input type="submit" value="提交"/>
             </Form>
@@ -83,7 +80,8 @@ let user = {
     age: 20,
     job: ['teacher', 'student'],
     sex: 'm',
-    single: false,
+    single: 0,
+    security: 1
 }
 
 ReactDOM.render(<UserForm store={user}/>, document.getElementById('root'));
